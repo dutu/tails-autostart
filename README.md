@@ -30,10 +30,12 @@ Finally, using Gnome's autostart feature, Startup.desktop is run each time gnome
 
 So on startup, gnome runs:
 
+
 ```mermaid
-Startup.desktop --> startup_mods.sh
-startup_mods.sh --> pkexec run_dir_scripts.sh
-startup_mods.sh --> run_dir_scripts.sh
-pkexec run_dir_scripts.sh --> root.d/*.sh
-run_dir_scripts.sh --> amnesia/*.sh
+graph LR;
+  A(Startup.desktop)-->B(startup_mods.sh);
+  B(startup_mods.sh)-->C(pkexec run_dir_scripts.sh);
+  B(startup_mods.sh)-->D(run_dir_scripts.sh);
+  C(pkexec run_dir_scripts.sh)-->E(root.d/*.sh);
+  D(run_dir_scripts.sh)-->F(amnesia/*.sh);
 ```
