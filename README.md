@@ -8,8 +8,6 @@ Automatically start scripts/applications on tails bootup
 
 There could be a need for several scripts to run each time Tails boots up, so this is a mechanism for doing so.
 
-This works to facilitate [tails-overlay](https://gitlab.com/tstone2077/tails-overlay) as well.
-
 ## How do I use it?
 
 1. Make sure you have dotfiles feature turned on in your persistence configuration.
@@ -22,15 +20,15 @@ This works to facilitate [tails-overlay](https://gitlab.com/tstone2077/tails-ove
 
 Done. Now: 
 
-* add any scripts to `.config/autostart/amnesia.d` to execute on startup them as amnesia;
-* add any scripts to `.config/autostart/root.d` to execute them on startup as root.
+* add any scripts to `/live/persistence/TailsData_unlocked/dotfiles/.config/autostart/amnesia.d` to execute on startup them as amnesia;
+* add any scripts to `/live/persistence/TailsData_unlocked/dotfiles/.config/autostart/root.d` to execute them on startup as root.
 
 ## How does it work?
 `run_dir_scripts.sh` runs all the scripts ending in `.sh` in a particular directory. This way, we use the same script to run `amnesia.d` scripts and `root.d` scripts.
 
 `startup_mods.sh` runs `run_dir_scripts.sh` for each user (root and amnesia). running as root is done using `pkexec` (gui for sudo prompt).
 
-Finally, using Gnome's autostart feature, `Startup.desktop` is run each time gnome starts up. This `Startup.desktop` runs `bash /home/amnesia/.config/autostart/startup_mods.sh`
+Finally, using Gnome's autostart feature, `Startup.desktop` is run each time Gnome starts up. This `Startup.desktop` runs `bash /home/amnesia/.config/autostart/startup_mods.sh`
 
 So on startup, gnome runs:
 
@@ -43,10 +41,11 @@ graph LR;
   D(run_dir_scripts.sh)-->F(amnesia/*.sh);
 ```
 
+> Note: `startup_mods.sh` now checks for `.sh` script files in `.config/autostart/root.d`. If no files are found, `pkexec` is not executed. This is to avoid unnecessary prompt to enter admin password after Gnome starts up.     
+
 ## Changelog
 
-2023-01-24
+2023-01-25
 * clone repository from https://gitlab.com/tstone2077/tails-autostart
 * update installation instruction to work with Tails 5.9
 * update `startup_mods.sh` to run `pkexec` only when there are scripts in `.config/autostart/root.d`
-* 
