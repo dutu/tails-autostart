@@ -25,6 +25,7 @@ fi
 
 echo "Moving files to installation directory '${install_dir}'..."
 mv -fT tails-autostart ${install_dir}/
+mv version-* ${install_dir}/
 chmod +x ${install_dir}/startup_mods.sh
 chmod +x ${install_dir}/run_dir_scripts.sh
 
