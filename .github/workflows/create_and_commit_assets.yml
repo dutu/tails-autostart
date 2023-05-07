@@ -14,8 +14,7 @@ jobs:
       - name: Extract release version
         run: |
           VERSION_FILE=$(ls src/version-*.txt)
-          RELEASE_VERSION=${VERSION_FILE##*_}
-          RELEASE_VERSION=${RELEASE_VERSION%.*}
+          RELEASE_VERSION=$(echo "$VERSION_FILE" | grep -oP '(?<=version-).*?(?=\.txt)')
           echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
 
       - name: Generate assets
