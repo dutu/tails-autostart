@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate assets
         run: |
-          tar -czvf tails-autostart.tar.gz src
+          tar -czvf tails-autostart.tar.gz --directory=src --transform 's/^src/repo/' .
 
       - name: Create assets directory
         run: |
