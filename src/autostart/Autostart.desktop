@@ -2,7 +2,7 @@
 Name=Tails-autostart
 GenericName=Tails Startup Script
 Comment=Run startup things when tails starts
-Exec=bash /home/amnesia/.config/autostart/startup_mods.sh
+Exec=bash /live/persistence/TailsData_unlocked/tails-autostart/startup_mods.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
