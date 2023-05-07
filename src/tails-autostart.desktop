@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=TailsStartup
+Name=Tails-autostart
 GenericName=Tails Startup Script
 Comment=Run startup things when tails starts
 Exec=bash /home/amnesia/.config/autostart/startup_mods.sh
