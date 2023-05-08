@@ -16,7 +16,7 @@ There could be a need for several scripts to run each time Tails boots up, so th
    ```shell
    cd ~/Downloads
    wget https://raw.githubusercontent.com/dutu/tails-autostart/master/assets/tails-autostart.tar.gz
-   tar -xzvf tails-autostart.tar.gz -C tails-autostart
+   tar -xzvf tails-autostart.tar.gz
    ```
 
 3. Run the installation script:
