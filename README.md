@@ -44,7 +44,7 @@ So on startup, gnome runs:
 
 ```mermaid
 graph LR;
-  A(Startup.desktop)-->B(startup_mods.sh);
+  A(Tails-autostart.desktop)-->B(startup_mods.sh);
   B(startup_mods.sh)-->C(pkexec run_dir_scripts.sh);
   B(startup_mods.sh)-->D(run_dir_scripts.sh);
   C(pkexec run_dir_scripts.sh)-->E(root.d/*.sh);
