@@ -1,9 +1,9 @@
 #!/bin/bash
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 user=$1
-for file in $(ls $SCRIPT_DIR/${user}.d/*.sh)
+for file in "${HOME}"/.config/autostart/"${user}".d/*.sh
 do
-  bash $file
+  [[ -e "$file" ]] || break  # handle the case of no files
+  bash "${file}"
 done
 
