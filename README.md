@@ -23,7 +23,7 @@ There could be a need for several scripts to run each time Tails boots up, so th
    ```shell
    cd tails-autostart
    chmod +x install_tails_autostart.sh
-   ./install_tails_autostart.sh
+   sudo ./install_tails_autostart.sh
    ```
 
 Done.
