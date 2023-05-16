@@ -23,7 +23,7 @@ fi
 
 echo "Copying files to autostart directory '${autostart_dir}'..."
 mkdir -p "${autostart_dir}"
-cp -a autostart/ "${autostart_dir}/"
+cp -af autostart/. "${autostart_dir}/"
 
 # Check if ${install_dir} contains any files and delete them if it does
 if [ "$(ls -A "${install_dir}" 2>/dev/null)" ]
@@ -34,8 +34,8 @@ fi
 
 echo "Copying files to installation directory '${install_dir}'..."
 mkdir -p "${install_dir}"
-cp -a tails-autostart/ "${install_dir}/"
-cp -a version-* "${install_dir}/"
+cp -af tails-autostart/. "${install_dir}/"
+cp -af version-* "${install_dir}/"
 chmod +x "${install_dir}/startup_mods.sh"
 chmod +x "${install_dir}/run_dir_scripts.sh"
 
