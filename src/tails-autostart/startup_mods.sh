@@ -6,6 +6,9 @@
 persistence_dir=/live/persistence/TailsData_unlocked
 install_dir=${persistence_dir}/tails-autostart
 
+# Enable nullglob to treat non-matching globs as null strings, not literal strings, to ensure empty array if no matching file.
+shopt -s nullglob
+
 # Check if root.d contains any *.sh files
 root_scripts=(/home/amnesia/.config/autostart/root.d/*.sh)
 if [ -e "${root_scripts[0]}" ]; then

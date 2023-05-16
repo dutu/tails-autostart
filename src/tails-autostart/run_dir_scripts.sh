@@ -5,6 +5,9 @@
 
 user=$1  # User's name is passed as the first argument to the script.
 
+# Enable nullglob to treat non-matching globs as null strings, not literal strings, to ensure empty array if no matching file.
+shopt -s nullglob
+
 # Iterate over all .sh files in the user's directory.
 for file in /home/amnesia/.config/autostart/"${user}".d/*.sh
 do
