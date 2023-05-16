@@ -5,16 +5,18 @@
 
 user=$1  # User's name is passed as the first argument to the script.
 
+autostart_dir="/home/amnesia/.config/autostart"
+
 # Enable nullglob to treat non-matching globs as null strings, not literal strings, to ensure empty array if no matching file.
 shopt -s nullglob
 
 # Iterate over all .sh files in the user's directory.
-for file in /home/amnesia/.config/autostart/"${user}".d/*.sh
+for file in "${autostart_dir}/${user}".d/*.sh
 do
     if [[ -x "$file" ]]; then
         # If the file is executable, Log the execution and execute the file
         logger "Executing ${file}..."
-        ./"${file}"
+        "${file}"
     else
         # If the file is not executable, display an error dialog.
         zenity --error --text="The file ${file} is not executable" --title="Tails-autostart"
