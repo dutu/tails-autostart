@@ -12,19 +12,19 @@ src_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # Check if ${autostart_dir} contains any files and delete them if it does
 mkdir -p "${autostart_dir}"
 files=$(find "$autostart_dir" -maxdepth 1 -type f)
-
-if [ -n "$files" ]; then
+if [ -n "$files" ] || [ -e "$autostart_dir/tails-autostart" ]; then
   echo "Files found in installation directory '${autostart_dir}'. Deleting them..."
   rm -f "$files"
+  rm -f "$autostart_dir/tails-autostart" 2>/dev/null
 fi
 
 echo "Copying files to autostart directory '${autostart_dir}'..."
 cp -af "${src_dir}/autostart/". "${autostart_dir}/"
-chmod +x "${autostart_dir}/startup_mods.sh"
-chmod +x "${autostart_dir}/run_dir_scripts.sh"
+chmod +x "${autostart_dir}/tails-autostart/startup_mods.sh"
+chmod +x "${autostart_dir}/tails-autostart/run_dir_scripts.sh"
 
 # Retrieve version from version-*.txt file in ${autostart_dir}/
-version_file=$(find "${autostart_dir}/" -maxdepth 1 -type f -name "version-*.txt" | head -n 1)
+version_file=$(find "${autostart_dir}/tails-autostart/" -maxdepth 1 -type f -name "version-*.txt" | head -n 1)
 version=$(echo "${version_file}" | grep -oP 'version-\K.*(?=\.txt)')
 
 red=$(tput setaf 1)

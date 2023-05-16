@@ -12,8 +12,8 @@ shopt -s nullglob
 root_scripts=("${autostart_dir}/root.d/"*.sh)
 if [ -e "${root_scripts[0]}" ]; then
   # Run root scripts
-  pkexec bash -x "${autostart_dir}/run_dir_scripts.sh" root
+  pkexec bash -x "${autostart_dir}/tails-autostart/run_dir_scripts.sh" root
 fi
 
 # Run non-root scripts
-bash -x "${autostart_dir}/run_dir_scripts.sh" amnesia
+bash -x "${autostart_dir}/tails-autostart/run_dir_scripts.sh" amnesia
