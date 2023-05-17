@@ -6,6 +6,14 @@
 persistence_dir="/live/persistence/TailsData_unlocked"
 autostart_dir="${persistence_dir}/dotfiles/.config/autostart"
 
+# Make sure we are running as 'amnesia'
+if test "$(whoami)" != "amnesia"
+then
+    echo "You must run this program as 'amnesia' user."
+    exit 1
+fi
+
+
 # Get the directory where the current script resides
 src_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
