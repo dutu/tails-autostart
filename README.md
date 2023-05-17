@@ -55,15 +55,10 @@ graph LR;
 
 ## How do I remove it from Tails?
 
-1. Remove `Tails-autostart.desktop` and example scripts:
+1. Remove Tails-autostart files:
    ```shell
    rm /live/persistence/TailsData_unlocked/dotfiles/.config/autostart/Tails-autostart.desktop
-   find /live/persistence/TailsData_unlocked/dotfiles/.config/autostart/ -type f -name "*.example" -exec rm -f {} +
+   rm -fr /live/persistence/TailsData_unlocked/dotfiles/.config/autostart/Tails-autostart
    ```
    
-2. Remove Tails-autostart script files
-   ```shell
-   sudo rm -rf /live/persistence/TailsData_unlocked/tails-autostart
-   ```
-
-> Note: Custom scripts that were added to `amnesia.d` and `root.d` directories are not removed, but these scripts are not run at startup anymore. 
+> Note: Scripts in `autostart/amnesia.d` and `autostart/root.d` intended to run on startup will remain in place. However, with the removal of Tails autostart, they will no longer be triggered at Tails startup. 
